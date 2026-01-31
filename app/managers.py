@@ -34,6 +34,7 @@ class ActorManager:
         cur = self.con.cursor()
         cur.execute(f"UPDATE {self.table_name} SET first_name=?, last_name=?"
                     f"WHERE id=?", (new_first_name, new_last_name, pk,))
+        self.con.commit()
         cur.close()
 
     def delete(self, pk: int) -> None:
